@@ -13,7 +13,7 @@ const renderSnap = () => {
   let handSnap = new Image();
   handSnap.src = 'thanos_snap.png'
   handSnap.onload=()=>{
-    window.requestAnimationFrame(renderFrame(0,handSnap.width/80))
+    window.requestAnimationFrame(()=>renderFrame(0,handSnap.width/80))
   }
 }
 
@@ -24,6 +24,6 @@ const renderFrame = (i,maxI) => {
     return
   }
   setTimeout(()=>
-  window.requestAnimationFrame(renderFrame(i+1,maxI)),100)
+  window.requestAnimationFrame(()=>renderFrame(i+1,maxI)),100)
 }
 canvas.onclick = renderSnap
