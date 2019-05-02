@@ -13,10 +13,16 @@ const renderSnap = () => {
   let handSnap = new Image();
   handSnap.src = 'thanos_snap.png'
   handSnap.onload=()=>{
-    for (var i=0; i<handSnap.width/80; i++) {
-      ctx.drawImage(handSnap,i*80,0,80,80,0,0,80,80)
-    }
+    window.requestAnimationFrame(renderFrame(0,handSnap.width/80))
   }
-  
+}
+
+const renderFrame = (i,maxI) => {
+  if (i>maxI) {
+    ctx.clearRect(0,0,80,80)
+    ctx.drawImage(handIdle,0,0,handIdle.width, handIdle.height)
+    return
+  }
+  window.requestAnimationFrame(renderFrame(i+1,maxI))
 }
 canvas.onclick = renderSnap
