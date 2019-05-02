@@ -23,7 +23,6 @@ const renderFrame = (i,maxI) => {
     ctx.drawImage(handIdle,0,0,handIdle.width, handIdle.height)
     return
   }
-  setTimeout(()=>
-  window.requestAnimationFrame(()=>renderFrame(i+1,maxI)),100)
+  window.requestAnimationFrame(()=>renderFrame(i+1,maxI))
 }
 canvas.onclick = renderSnap
