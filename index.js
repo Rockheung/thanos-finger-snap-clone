@@ -3,7 +3,7 @@ let ctx = canvas.getContext('2d')
 var handIdle = new Image();
 handIdle.src = 'thanos_idle.png'
 handIdle.onload = ()=>{
-  ctx.drawImage(hand,0,0,hand.width, hand.height)
+  ctx.drawImage(hand,0,0,handIdle.width, handIdle.height)
 }
 handIdle.onerror=(e)=>{
   console.log(e)
