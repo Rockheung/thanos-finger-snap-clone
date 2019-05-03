@@ -1,7 +1,7 @@
 const imgSize = 80
 const canvasRatio = 2
 const framerate = 15
-const moveXoffset = 2;
+const moveXoffset = 0;
 let canvas = document.querySelector("#root");
 let ctx = canvas.getContext('2d')
 var handIdle = new Image();
