@@ -1,6 +1,7 @@
 const imgSize = 80
 const canvasRatio = 2
 const framerate = 15
+const moveXoffset = 2;
 let canvas = document.querySelector("#root");
 let ctx = canvas.getContext('2d')
 var handIdle = new Image();
@@ -32,7 +33,7 @@ const renderFrame = (i,img) => {
   }
   isRunning = false
   ctx.clearRect(0,0,imgSize*canvasRatio,imgSize*canvasRatio)
-  ctx.drawImage(img,i*imgSize,0,imgSize,imgSize,0,0,imgSize*canvasRatio, 80*canvasRatio)
+  ctx.drawImage(img,i*(imgSize+moveXoffset),0,imgSize,imgSize,0,0,imgSize*canvasRatio, 80*canvasRatio)
   setTimeout(()=>renderFrame(i+1,img),1000/framerate)
 }
 canvas.onclick = renderSnap
