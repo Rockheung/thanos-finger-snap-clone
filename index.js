@@ -11,25 +11,28 @@ handIdle.onload = ()=>{
 handIdle.onerror=(e)=>{
   console.log(e)
 }
+let isRunning = true
 
 const renderSnap = () => {
   let handSnap = new Image();
   handSnap.src = 'https://rockheung.github.io/thanos-finger-snap-clone/thanos_snap.png'
   handSnap.onload=()=>{
-    renderFrame(0,handSnap)
+    if (isRunning) {
+      renderFrame(0,handSnap)
+    }
   }
 }
 
 const renderFrame = (i,img) => {
-  if (i>img.width/80-1) {
+  if (i>img.width/imgSize-1) {
     ctx.clearRect(0,0,imgSize*canvasRatio,imgSize*canvasRatio)
     ctx.drawImage(handIdle,0,0,handIdle.width*canvasRatio, handIdle.height*canvasRatio)
+    isRunning = true
     return
   }
-  let newImg = new Image()
-  newImg.src = img.src
+  isRunning = false
   ctx.clearRect(0,0,imgSize*canvasRatio,imgSize*canvasRatio)
-  ctx.drawImage(newImg,i*80,0,80,80,0,0,80*canvasRatio, 80*canvasRatio)
+  ctx.drawImage(img,i*imgSize,0,imgSize,imgSize,0,0,imgSize*canvasRatio, 80*canvasRatio)
   setTimeout(()=>renderFrame(i+1,img),1000/framerate)
 }
 canvas.onclick = renderSnap
