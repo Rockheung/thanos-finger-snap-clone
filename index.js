@@ -21,7 +21,7 @@ const renderSnap = () => {
 }
 
 const renderFrame = (i,img) => {
-  if (i>img.width/80) {
+  if (i>img.width/80-1) {
     ctx.clearRect(0,0,imgSize*canvasRatio,imgSize*canvasRatio)
     ctx.drawImage(handIdle,0,0,handIdle.width*canvasRatio, handIdle.height*canvasRatio)
     return
