@@ -1,7 +1,9 @@
 const imgSize = 80
 const canvasRatio = 2
-const framerate = 50
+const framerate = 30
 const moveXoffset = 0;
+let isSync = true
+
 let canvas = document.querySelector("#root");
 let ctx = canvas.getContext('2d')
 var handIdle = new Image();
@@ -19,7 +21,7 @@ const renderSnap = () => {
   handSnap.src = 'https://rockheung.github.io/thanos-finger-snap-clone/thanos_snap.png'
   handSnap.onload=()=>{
     if (isRunning) {
-      renderFrameSync(0,handSnap)
+      isSync ? renderFrame(0,handSnap) : renderFrameSync(0,handSnap)
     }
   }
 }
